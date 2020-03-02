@@ -15,57 +15,21 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static('public'));
 
-//load product model
-const productModel = require("./models/product");
+//load controllers
+const generalController = require("./controllers/general");
+const productController = require("./controllers/product");
 
+//map each controller back to app object
+app.use("/",generalController);
+        //-> any route that is "/...", will go to generalController in this use
+app.use("/product",productController);
+        //-> any route that is "/product/..." will go to productController in this use,
+        //   but acutally it will go to first midleware first, but will fail match, so move to here
+
+
+
+//set the server
 const PORT = 3000;
-
-//home route
-app.get("/",(req,res)=>{
-
-    res.render("general/home",{
-        title : "home page"
-    });
-});
-
-//contact us route
-app.get("/contact-us",(req,res)=>{
-
-    res.render("general/contactUs",{
-        title : "contact-us page"
-    });
-});
-
-//user submit the request
-app.post("/contact-us",(req,res)=>{
-
-    res.render();
-});
-
-//show all product
-app.get("/product/list",(req,res)=>{
-
-    res.render("products/productList",{
-        title : "product list page",
-        products : productModel.getAllProducts()
-    });
-});
-
-//show add product form
-app.get("/product/add",(req,res)=>{
-
-    res.render("products/productAdd",{
-        title : "add product page"
-    });
-});
-
-//user submit the add product form
-app.post("/product/add",(req,res)=>{
-
-    res.render();
-});
-
-
 
 app.listen(PORT,()=>{
     console.log(`email web`);
