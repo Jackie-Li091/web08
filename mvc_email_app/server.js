@@ -13,18 +13,21 @@ app.set('view engine','handlebars');
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.use(express.static('public'));
+
+
 const PORT = 3000;
 
 //home route
 app.get("/",(req,res)=>{
 
-    res.render();
+    res.render("general/home");
 });
 
 //contact us route
 app.get("/contact-us",(req,res)=>{
 
-    res.render();
+    res.render("general/contactUs");
 });
 
 //user submit the request
@@ -36,13 +39,13 @@ app.post("/contact-us",(req,res)=>{
 //show all product
 app.get("/product/list",(req,res)=>{
 
-    res.render();
+    res.render("products/productList");
 });
 
 //show add product form
 app.get("/product/add",(req,res)=>{
 
-    res.render();
+    res.render("products/productAdd");
 });
 
 //user submit the add product form
