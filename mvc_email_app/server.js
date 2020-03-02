@@ -1,6 +1,8 @@
 const express = require("express");
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
+require('dotenv').config({path:"./config/keys.env"});
+    //load the env variable file
 
 
 const app = express();
@@ -29,7 +31,7 @@ app.use("/product",productController);
 
 
 //set the server
-const PORT = 3000;
+const PORT = process.env.PORT;
 
 app.listen(PORT,()=>{
     console.log(`email web`);
