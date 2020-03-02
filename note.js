@@ -23,5 +23,15 @@
     //config dir for sensitive configeration file
         
 
+//-3. get the API key, to modify you are who you are.
+    // if you upload API key to github, 
+    // it will weak your code and might deactive your key.
+
+//-4. Enivorment variable:
+    // -> a variable whose value is set outside the program,
+    //    typically through functionality built into the operating system or microservice.
+
+    
+
 
 
